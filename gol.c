@@ -4,7 +4,7 @@
 #include <unistd.h>
 
 #define COLS      20
-#define ROWS 	  10
+#define ROWS      10
 #define NUM_CELLS COLS*ROWS
 #define ALIVE     'g'
 #define DEAD      '_'
@@ -24,8 +24,8 @@ void next_state() {
     char next_cells[NUM_CELLS];
     memcpy(next_cells, cells, sizeof(cells));
 
-    for (size_t i=0; i < ROWS; ++i) {
-        for (size_t j=0; j < COLS; ++j) {
+    for (size_t i=1; i < ROWS-1; ++i) {
+        for (size_t j=1; j < COLS-1; ++j) {
             size_t k = j + i*COLS;
             int neighbours = 0;
 
@@ -53,10 +53,10 @@ void next_state() {
 void print_state() {
    for (size_t i=0; i < ROWS; ++i) {
         for (size_t j=0; j < COLS; ++j) {
-        	putc(cells[j + i*COLS], stdout);
+            putchar(cells[j + i*COLS]);
         }
-        putc('\n', stdout);
-   	} 
+        putchar('\n');
+   	}
 }
 
 int main(void) {
